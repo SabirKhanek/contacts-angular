@@ -1,0 +1,15 @@
+services:
+  mongo_db:
+    container_name: mongo_db_container
+    image: mongo:latest
+    restart: always
+  app:
+    build: .
+    ports:
+      - 80:3000
+    environment:
+      - MONGO_DB=mongodb://mongo_db:27017/dit-test
+      - ENV PORT=3000
+      - ENV NODE_ENV=production
+    depends_on:
+      - mongo_db

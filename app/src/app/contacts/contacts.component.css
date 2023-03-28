@@ -1,0 +1,25 @@
+button {
+    width: 75px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 360px;
+    width: 300px;
+}
+
+#no-item-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    button {
+        width: 60px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+}

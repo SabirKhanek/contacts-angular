@@ -1,0 +1,39 @@
+<style>
+    .contact-card-container {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .contact-card-logo img {
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: top center;
+        width: 100px;
+        height: 100px;
+        margin-right: 20px;
+    }
+
+    .contact-card-details p {
+        margin: 0;
+    }
+
+    .contact-card-details .contact-info {
+        font-size: 14px;
+        color: #6c757d;
+    }
+</style>
+
+<div class="contact-card-container">
+    <div class="contact-card-logo">
+        <img [src]="sanitize('data:image/jpg;base64, ' + _arrayBufferToBase64(contactObj.profilePic.data))"
+            alt="Contact Image" width="100" height="100" style="border-radius: 50%;">
+    </div>
+    <div class="contact-card-details">
+        <p style="font-weight: 500;font-size: 18px;">{{contactObj.firstName}} {{contactObj.lastName}}</p>
+        <p class="contact-info">{{contactObj.phone}}</p>
+        <p class="contact-info">{{contactObj.email}}</p>
+    </div>
+</div>

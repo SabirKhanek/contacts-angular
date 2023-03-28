@@ -1,0 +1,28 @@
+<div>
+    <div *ngIf="selections.length <= 0;then noSelection else selection">
+    </div>
+    <ng-template #noSelection>
+        <p style="display: inline;" *ngIf="contacts.length>0">Listing {{contacts.length}} contacts</p>
+        <p style="display: inline;" *ngIf="contacts.length<=0">No contacts to list</p>
+        <button class="btn btn-primary" style="float: right;" (click)="onReset()">Reset</button>
+    </ng-template>
+    <ng-template #selection>
+        <p style="display: inline">{{selections.length}} of {{contacts.length}} contacts selected</p>
+        <button class="btn btn-primary" style="float: right;" (click)="onDelete('keep')">Keep</button>
+        <button class="btn btn-danger mx-2" style="float: right;" (click)="onDelete('delete')">Delete</button>
+    </ng-template>
+</div>
+
+<div class="container" *ngIf="contacts.length<=0">
+    <img id="no-item-image" src="../../assets/no-item-found.png" style="display: block;">
+</div>
+
+
+<ul class="list-group mt-4" *ngIf="contacts.length>0">
+    <li class="list-group-item list-group-item-action" *ngFor="let contact of contacts" (click)="onSelect(contact)"
+        [ngClass]="{
+        'list-group-item-dark': selections.includes(contact)
+    }">
+        <contact [contact]="contact" (delete)="onDelete($event)"></contact>
+    </li>
+</ul>
